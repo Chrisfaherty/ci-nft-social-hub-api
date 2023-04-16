@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
-if os.path.exists('env.py')
+if os.path.exists('env.py'):
+    import env
 
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
@@ -36,7 +37,7 @@ SECRET_KEY = 'django-insecure--0+sts+az-e9vl$u+rok$si*&t(a89eea2kucgeyi)$_)zh_s5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://8000-chrisfaherty-ci-nft-soci-n7w7z5y6oj.us2.codeanyapp.com']
 
 
 # Application definition
