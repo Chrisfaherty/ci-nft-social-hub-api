@@ -37,7 +37,7 @@ SECRET_KEY = 'django-insecure--0+sts+az-e9vl$u+rok$si*&t(a89eea2kucgeyi)$_)zh_s5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8003-chrisfaherty-ci-nft-soci-3qg3t0xegl.us2.codeanyapp.com']
+ALLOWED_HOSTS = ['8000-chrisfaherty-ci-nft-soci-3qg3t0xegl.us2.codeanyapp.com']
 
 
 # Application definition
