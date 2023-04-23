@@ -43,3 +43,14 @@ class PostDetailViewTests(APITestCase):
         response = self.client.get('/posts/1/')
         self.assertEqual(response.data['title'],'This is a title')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
+    
+    def test_can_not_fetch_post_by_invalid_id(self):
+        response = self.client.get('/posts/999/')
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+    def test_user_can_update_own_posts(self):
+        self.client.login(username='sam', password='password')
+        response = self.client.put('/posts/1/', {'title': 'This is a new title'})
+        post = Post.objects.filter(pk=1).first()
+        self.assertEqual(post.title, 'This is a new title')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
