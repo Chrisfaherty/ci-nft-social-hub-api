@@ -8,6 +8,7 @@ dbus-python==1.2.18
 distro==1.7.0
 Django==3.2.18
 django-cloudinary-storage==0.3.0
+django-filter==23.1
 djangorestframework==3.14.0
 httplib2==0.20.2
 idna==3.4
