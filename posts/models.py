@@ -7,14 +7,19 @@ class Post(models.Model):
     Post model, related to 'owner', i.e. a User instance.
     Default image set so that we can always reference image.url.
     """
-    image_filter_choices = [
-    ('_1977', '1977'), ('brannan', 'Brannan'),
-    ('earlybird', 'Earlybird'), ('hudson', 'Hudson'),
-    ('inkwell', 'Inkwell'), ('lofi', 'Lo-Fi'),
-    ('kelvin', 'Kelvin'), ('normal', 'Normal'),
-    ('nashville', 'Nashville'), ('rise', 'Rise'),
-    ('toaster', 'Toaster'), ('valencia', 'Valencia'),
-    ('walden', 'Walden'), ('xpro2', 'X-pro II')
+    category_choices = [
+    ('pfps / avatars', 'PFPs / Avatars'),
+    ('one-of-one artwork', 'One-of-one Artwork'),
+    ('generative art', 'Generative art'),
+    ('collectibles', 'Collectibles'),
+    ('photography', 'Photography'),
+    ('music', 'Music'),
+    ('gamified', 'Gameified'),
+    ('event ticket', 'Event Ticket'),
+    ('membership pass', 'Membership Pass'),
+    ('domain names', 'Domain names'),
+    ('other', 'Other')
+
 ]
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -22,11 +27,18 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     content = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../ci-nft-social-hub/default_post_icenjp.jpg', blank=True
+        upload_to='images/', 
+        default='../ci-nft-social-hub/default_post_icenjp.jpg', 
+        blank=True
     )
-    image_filter = models.CharField(
-        max_length=32, choices=image_filter_choices, default='normal'
+    category_filter = models.CharField(
+        max_length=32, 
+        choices=category_choices, 
+        default='normal'
     )
+    website = models.UrlField(blank=True)
+    social = models.UrlField(blank=True)
+    marketplace = models.UrlField(blank=True)
 
     class Meta:
         ordering = ['-created_at']
