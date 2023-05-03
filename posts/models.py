@@ -36,9 +36,9 @@ class Post(models.Model):
         choices=category_choices, 
         default='normal'
     )
-    website = models.UrlField(blank=True)
-    social = models.UrlField(blank=True)
-    marketplace = models.UrlField(blank=True)
+    website = models.URLField(blank=True)
+    social = models.URLField(blank=True)
+    marketplace = models.URLField(blank=True)
 
     class Meta:
         ordering = ['-created_at']
