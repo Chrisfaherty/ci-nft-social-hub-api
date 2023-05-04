@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from ratings.models import Ratings
+from ratings.models import Rating
 from django.db.models import Avg
 
 
