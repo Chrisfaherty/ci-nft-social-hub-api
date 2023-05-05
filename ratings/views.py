@@ -13,7 +13,7 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, "index.html", {"posts": posts})
 
 
-def rate(request: HttpRequest, post_id: int, rating: int) -> HttpResponse:
+def rating(request: HttpRequest, post_id: int, rating: int) -> HttpResponse:
     post = Post.objects.get(id=post_id)
     Rating.objects.filter(post=post, user=request.user).delete()
     post.rating_set.create(user=request.user, rating=rating)
