@@ -1,11 +1,21 @@
-from .models import Post
+from django.db import IntegrityError
 from rest_framework import serializers
+from ratings.models import Rating
 
-class PostSerializer(serializers.ModelSerializer):
-    rating = serializers.StringRelatedField(many=True)
+
+class RatingSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
-        model= Post
+        model = Rating
         fields = [
-            'id', 'name', 'slug', 'image', 'description', 'rating'
+            'id', 'owner', 'created_at', 'post', 'rating',
         ]
+    
+    def create(self, validated_data):
+        try:
+            return super().create(validated_data)
+        except IntegrityError:
+            raise serializers.ValidationError({
+        'detail': 'possible duplicate'
+        })
