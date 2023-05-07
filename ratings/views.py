@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import generics, permissions
 from ratings.serializers import RatingSerializer
 from ratings.models import Rating
+from posts.models import Post
 from django.http import HttpRequest, HttpResponse
 
 
