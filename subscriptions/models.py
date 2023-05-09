@@ -8,7 +8,6 @@ class Subscribers(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['-created_at']
         unique_together = ['owner', 'email']
 
     def __str__(self):
@@ -22,7 +21,6 @@ class SubscribersMessage(models.Model):
     message = models.TextField(null=True)
 
     class Meta:
-        ordering = ['-created_at']
         unique_together = ['owner', 'title']
 
     def __str__(self):
