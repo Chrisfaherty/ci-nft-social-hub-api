@@ -8,7 +8,7 @@ class Subscribers(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.email
+        return f'{self.owner} {self.email}
 
 
 class SubscribersMessage(models.Model):
@@ -18,4 +18,4 @@ class SubscribersMessage(models.Model):
     message = models.TextField(null=True)
 
     def __str__(self):
-        return self.title
+        return f'{self.owner} {self.title}'
