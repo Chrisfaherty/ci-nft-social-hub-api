@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from nft_social_hub_api.permissions import IsOwnerOrReadOnly
-from likes.models import Like, DisLike
-from likes.serializers import LikeSerializer, DisLikeSerializer
+from subscriptions.models import Subscribers, SubscribersMessage
+from subscriptions.serializers import LikeSerializer, DisLikeSerializer
 
 
 class LikeList(generics.ListCreateAPIView):
