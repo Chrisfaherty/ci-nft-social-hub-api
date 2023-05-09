@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Post
-from likes.models import Like
-from ratings.models import Rating
+from likes.models import Like, DisLike
 
 
 
@@ -11,10 +10,10 @@ class PostSerializer(serializers.ModelSerializer):
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     like_id = serializers.SerializerMethodField()
-    rating_id = serializers.SerializerMethodField()
+    dislike_id = serializers.SerializerMethodField()
     comments_count = serializers.ReadOnlyField()
     likes_count = serializers.ReadOnlyField()
-    ratings_count = serializers.ReadOnlyField()
+    dislikes_count = serializers.ReadOnlyField()
 
     def validate_image(self, value):
         if value.size > 1024 * 1024 * 2:
@@ -45,13 +44,13 @@ class PostSerializer(serializers.ModelSerializer):
             return like.id if like else None
         return None
 
-    def get_rating_id(self, obj):
+    def get_dislike_id(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
-            rating = Rating.objects.filter(
+            dislike = DisLike.objects.filter(
                 owner=user, post=obj
             ).first()
-            return rating.id if rating else None
+            return dislike.id if dislike else None
         return None
 
 

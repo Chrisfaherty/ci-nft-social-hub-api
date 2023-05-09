@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from ratings.models import Rating
-from django.db.models import Avg
 
 
 class Post(models.Model):
@@ -45,8 +43,5 @@ class Post(models.Model):
     class Meta:
         ordering = ['-created_at']
 
-    def average_rating(self) -> float:
-        return Rating.objects.filter(post=self).aggregate(Avg("rating"))["rating__avg"] or 0
-
     def __str__(self):
-        return f'{self.id} {self.title} {self.average_rating()}'
+        return f'{self.id} {self.title}'
