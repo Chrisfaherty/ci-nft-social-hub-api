@@ -63,8 +63,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = [
-   os.environ.get('ALLOWED_HOST'),
-   '8000-chrisfaherty-ci-nft-soci-0szrz8fpn2.us2.codeanyapp.com',
+   os.environ.get('ALLOWED_HOST'),'localhost',
+   'https://8000-chrisfahert-cinftsocial-npx0m8s06z3.ws-eu96b.gitpod.io',
 ]
 
 

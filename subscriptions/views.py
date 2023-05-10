@@ -9,7 +9,7 @@ class SubscribersList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Subscribers.objects.all()
 
-    def perform_create(self,serializer):
+    def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
     
@@ -24,10 +24,10 @@ class SubscribersMessageList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = SubscribersMessage.objects.all()
 
-    def perform_create(self,serializer):
+    def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-    
+
 class SubscribersMessageDetail(generics.RetrieveDestroyAPIView):
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = SubscribersMessageSerializer
