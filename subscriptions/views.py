@@ -7,7 +7,7 @@ from subscriptions.serializers import SubscribersSerializer, SubscribersMessageS
 class SubscribersList(generics.ListCreateAPIView):
     serializer_class = SubscribersSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    queryset = Like.objects.all()
+    queryset = Subscribers.objects.all()
 
     def perform_create(self,serializer):
         serializer.save(owner=self.request.user)

@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from subscribers.models import Subscribers, SubscribersMessage
+from subscriptions.models import Subscribers, SubscribersMessage
+
 
 class SubscribersSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -15,9 +16,9 @@ class SubscribersSerializer(serializers.ModelSerializer):
 class SubscribersMessageSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     title = serializers.CharField()
-    message = serializers.TextField()
+    message = serializers.CharField()
 
-        class Meta:
+    class Meta:
         model = Subscribers
         fields = [
             'id', 'owner', 'created_at', 'title', 'message'
