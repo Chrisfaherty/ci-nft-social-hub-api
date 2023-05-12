@@ -64,9 +64,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = [
-   os.environ.get('ALLOWED_HOST'),'localhost',
+   os.environ.get('ALLOWED_HOST'), 'localhost',
    'https://8000-chrisfahert-cinftsocial-npx0m8s06z3.ws-eu96b.gitpod.io',
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://8000-chrisfahert-cinftsocial-npx0m8s06z3.ws-eu96b.gitpod.io', 'ci-nft-social-hub-api.herokuapp.com']
 
 
 # Application definition
@@ -117,7 +119,6 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
     ]
 
 CORS_ALLOW_CREDENTIALS = True
-     
 
 ROOT_URLCONF = 'nft_social_hub_api.urls'
 
