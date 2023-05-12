@@ -63,10 +63,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = [
-   os.environ.get('ALLOWED_HOST'), 'localhost',
-   'https://8000-chrisfahert-cinftsocial-npx0m8s06z3.ws-eu96b.gitpod.io',
-]
+ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'),]
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-chrisfahert-cinftsocial-npx0m8s06z3.ws-eu96b.gitpod.io', 'ci-nft-social-hub-api.herokuapp.com']
 
@@ -102,6 +99,7 @@ INSTALLED_APPS = [
 ]
 SITE_ID = 1
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -109,9 +107,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
+if 'CLIENT_ORIGIN' in os.environ:
+    CORS_ALLOWED_ORIGINS = [
+         os.environ.get('CLIENT_ORIGIN')
+     ]
 if 'CLIENT_ORIGIN_DEV' in os.environ:
     extracted_url = re.match(r'^.+-', os.environ.get('CLIENT_ORIGIN_DEV', ''), re.IGNORECASE).group(0)
     CORS_ALLOWED_ORIGIN_REGEXES = [
