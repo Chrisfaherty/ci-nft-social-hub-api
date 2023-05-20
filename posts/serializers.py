@@ -3,7 +3,6 @@ from .models import Post
 from likes.models import Like, DisLike
 
 
-
 class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
@@ -23,13 +22,12 @@ class PostSerializer(serializers.ModelSerializer):
         if value.image.width > 4096:
             raise serializers.ValidationError(
                 "Image width larger than 4096px!"
-        )
+            )
         if value.image.height > 4096:
             raise serializers.ValidationError(
                 "Image height larger than 4096px!"
-        )
+            )
         return value
-
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -53,11 +51,11 @@ class PostSerializer(serializers.ModelSerializer):
             return dislike.id if dislike else None
         return None
 
-
     class Meta:
         model = Post
         fields = [
             'id', 'owner', 'profile_id', 'profile_image', 'created_at',
             'updated_at', 'title', 'content', 'image', 'is_owner',
-            'category_filter', 'like_id', 'likes_count', 'comments_count', 'dislike_id', 'dislikes_count',
+            'category_filter', 'like_id', 'likes_count', 'comments_count',
+            'dislike_id', 'dislikes_count',
         ]

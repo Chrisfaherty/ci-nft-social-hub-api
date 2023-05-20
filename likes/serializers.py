@@ -11,14 +11,14 @@ class LikeSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'created_at', 'post',
         ]
-    
+
     def create(self, validated_data):
         try:
             return super().create(validated_data)
         except IntegrityError:
             raise serializers.ValidationError({
-        'detail': 'possible duplicate'
-        })
+                'detail': 'possible duplicate'
+            })
 
 
 class DisLikeSerializer(serializers.ModelSerializer):
@@ -29,11 +29,11 @@ class DisLikeSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'owner', 'created_at', 'post',
         ]
-    
+
     def create(self, validated_data):
         try:
             return super().create(validated_data)
         except IntegrityError:
             raise serializers.ValidationError({
-        'detail': 'possible duplicate'
-        })
+                'detail': 'possible duplicate'
+            })
