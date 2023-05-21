@@ -3,7 +3,7 @@ from subscriptions.models import Subscribers, SubscribersMessage
 
 
 class SubscribersSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
+    owner = serializers.ReadOnlyField(source='owner.name')
     email = serializers.EmailField()
 
     class Meta:
@@ -14,7 +14,7 @@ class SubscribersSerializer(serializers.ModelSerializer):
 
 
 class SubscribersMessageSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')
+    owner = serializers.ReadOnlyField(source='owner.name')
     title = serializers.CharField()
     message = serializers.CharField()
 
