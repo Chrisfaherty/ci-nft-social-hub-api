@@ -14,7 +14,7 @@ class Subscribers(models.Model):
 
 
 class SubscribersMessage(models.Model):
-    fullname = models.models.CharField(max_length=55)
+    fullname = models.CharField(max_length=55)
     email = models.EmailField(null=True)
     title = models.CharField(max_length=100, null=True)
     date = models.DateTimeField(auto_now_add=True)
