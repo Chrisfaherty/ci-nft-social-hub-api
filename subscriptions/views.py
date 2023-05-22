@@ -10,7 +10,7 @@ class SubscribersList(generics.ListCreateAPIView):
     queryset = Subscribers.objects.all()
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(fullname=self.request.user)
 
  
 class SubscribersDetail(generics.RetrieveDestroyAPIView):
@@ -25,7 +25,7 @@ class SubscribersMessageList(generics.ListCreateAPIView):
     queryset = SubscribersMessage.objects.all()
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        serializer.save(fullname=self.request.user)
 
 
 class SubscribersMessageDetail(generics.RetrieveDestroyAPIView):

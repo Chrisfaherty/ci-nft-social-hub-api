@@ -7,7 +7,7 @@ class SubscribersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subscribers
         fields = [
-            'id', 'fullname', 'created_at', 'email', 'date'
+            'id', 'fullname', 'email', 'date'
         ]
 
 
@@ -16,5 +16,5 @@ class SubscribersMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = SubscribersMessage
         fields = [
-            'id', 'fullname', 'created_at', 'title', 'message', 'email',
+            'id', 'fullname', 'title', 'message', 'email',
         ]
