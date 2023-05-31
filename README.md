@@ -1,156 +1,139 @@
-# NFT SOCIAL HUB
+<h1 align="center">NFT Social Hub Django Rest Framework API - Project Portfolio 5</h1>
 
-## Project goals
-This project provides a Django Rest Framework API for the [NFT Social Hub React web app]().
+![GitHub last commit](https://img.shields.io/github/last-commit/bodthegod/thebod-drf-api?color=blue&style=for-the-badge)
 
-NFT Social Hub is intended to be an enviroment . The primary goals of the web app are to:
-1) P
-2) D
-3) O
+![GitHub contributors](https://img.shields.io/github/contributors/bodthegod/thebod-drf-api?color=green&style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/bodthegod/thebod-drf-api?color=orange&style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/bodthegod/thebod-drf-api?color=brown&style=for-the-badge)
+## - By Christopher Faherty
 
-## Table of contents
-- [NFT SOCIAL HUB](#nftsocialhub)
-  * [Project goals](#project-goals)
-  * [Table of contents](#table-of-contents)
-  * [Planning](#planning)
-    + [Data models](#data-models)
-      - [**Profile**](#--profile--)
-      - [**Event**](#--event--)
-    + [**Notification**](#--notification--)
-    + [**Contact**](#--contact--)
-  * [API endpoints](#api-endpoints)
-  * [Frameworks, libraries and dependencies](#frameworks--libraries-and-dependencies)
-    + [django-cloudinary-storage](#django-cloudinary-storage)
-    + [dj-allauth](#dj-allauth)
-    + [dj-rest-auth](#dj-rest-auth)
-    + [djangorestframework-simplejwt](#djangorestframework-simplejwt)
-    + [dj-database-url](#dj-database-url)
-    + [psychopg2](#psychopg2)
-    + [python-dateutil](#python-dateutil)
-    + [django-recurrence](#django-recurrence)
-    + [django-filter](#django-filter)
-    + [django-cors-headers](#django-cors-headers)
-  * [Testing](#testing)
-    + [Manual testing](#manual-testing)
-    + [Automated tests](#automated-tests)
-    + [Python validation](#python-validation)
-    + [Resolved bugs](#resolved-bugs)
-      - [Bugs found while testing the API in isolation](#bugs-found-while-testing-the-api-in-isolation)
-      - [Bugs found while testing the React front-end](#bugs-found-while-testing-the-react-front-end)
-    + [Unresolved bugs](#unresolved-bugs)
-  * [Deployment](#deployment)
-  * [Credits](#credits)
-
-<small><i><a href=''>Table of contents generated with markdown-toc</a></i></small>
-
-## Planning
-See the [repo for the frontend React app](https://github.com/) for more details.
-
-The user stories requiring implementation to achieve a minimum viable product (MVP) were then mapped to API endpoints required to support the desired functionality.
-The user stories themselves are recorded [on this Google sheet](https://docs.google.com/), with the required API endpoints mapped to user stories on [a second sheet on the same document](https://docs.google.com/).
-
-### Data models
-Data model schema were planned in parallel with the API endpoints, using an entity relationship diagram.
-
-Custom models implemented for NFT Social Hub are:
-
-#### **Profile**
-Represents the user profile, using a one-to-one relationsip to the user model. A Profile instance is automatically created on user registration. The Profile model includes an `is_admin` boolean field, which is used to determine whether a given user has admin privileges. Note that initial user registration creates a profile with admin rights.
-
-The Profile model has a many to one relationship with the NFT Social Hub model. This is used throught the API to associate users with their tribes.
-
-Users can edit their own `display_name` and `image` fields.
-
-### **Notification**
+### [View the live project here](https://ci-nft-social-hub.herokuapp.com/) #
+### [View the deployed API here](http://ci-nft-social-hub-api.herokuapp.com/) #
+### [View the API repository here](https://github.com/Chrisfaherty/ci-nft-social-hub-api) #
 
 
-### **Contact**
+# Table of Contents:
+1. [User Stories](#user-stories)
+2. [Database Model Structure](#database-model-structure)
+3. [Languages and Technologies Used](#languages-used)
+4. [Testing](#testing)
+    - [Validation](#validation)
+5. [Bugs and fixes](#known-bugs)
+6. [Credits](#credits)
 
 
-<p align="center">
-    <img src="" width=400>
-</p>
+## User Stories
 
-<p align="center">
-    Link to full-size diagram: 
-</p>
+From the backend perspective of this API, the user stories are CRUD focused and authentication focused.
+1. As an admin, I want create functionality of all profiles, posts, likes, comments and subscriptions.
+2. As an admin, I want update functionality of all profiles, posts, likes and comments so that I can edit any content I choose to.
+3. As an admin, I want delete functionality of all profiles, posts, likes and comments so that I can delete any content that may be deemed as harmful.
 
-<p align="center">
-    <a href="" target="_rel">Link to full size DB schema</a>
-</p>
+## Database Model Structure
 
-## API endpoints
-| **URL** | **Notes** | **HTTP Method** | **CRUD operation** | **View type** | **POST/PUT data format** |
-|---|---|---:|---|---:|---|
-|  |  |  |  |  |  |
+<img src="">
 
+### Profile Model
 
-Table generated using https://www.tablesgenerator.com/markdown_tables/load
+- This model is directly linked in a one to one relationship with the User model, imported from django-allauth.
+- The Profile model contains all fields that are associated with a profile when a user creates one. These fields are as such:
+1. owner = OneToOne with User field
+2. created_at = DateTimeField
+3. updated_at = DateTimeField
+4. name = CharField
+5. content = TextField
+6. image = ImageField with default profile image
 
-<p align="center">
-    Link to a larger version of this table with sample output data: 
-</p>
+### User Model
 
-<p align="center">
-    <a href="endpoints.md" target="_rel">API endpoints table</a>
-</p>
+- This model is imported from django-allauth, and is integrated within all functional model classes.
+- The User model contains multiple fields associated with all foreign models within my app:
+1. Profile model = owner field holds OneToOne relationship with User
+2. Posts model = owner field holds ForeignKey relationship with User
+3. Likes model = owner field holds ForeignKey relationship with User
+4. Followers model = owner & followed fields hold ForeignKey relationship with User which are related to following & followed
+5. Comments model = owner field holds ForeignKey relationship with User
 
-## Frameworks, libraries and dependencies
-The NFT Social Hub API is implemented in Python using [Django](https://www.djangoproject.com) and [Django Rest Framework](https://django-filter.readthedocs.io/en/stable/).
+### Post Model
 
-The following additional utilities, apps and modules were also used.
+- The Post model contains all fields that are associated with a post when a logged in user creates one. These fields are as such:
+1. owner = ForeignKey with User field
+2. created_at = DateTimeField
+3. updated_at = DateTimeField
+4. title = CharField
+5. category = CharField
+6. content = TextField
+7. image = ImageField with default post image
+8. website = URLField
+9. social = URLField
+10. marketplace = URLField 
 
-### django-cloudinary-storage
-https://pypi.org/project/django-cloudinary-storage/
+### Follower Model
 
-Enables cloudinary integration for storing user profile images in cloudinary.
+- The Follower model contains all fields that are associated when a logged in user attempts to follow another profile, as such:
+1. owner = ForeignKey with User field
+2. followed = ForeignKey between User field and followed field
+3. created_at = DateTimeField
 
-### dj-allauth
-https://django-allauth.readthedocs.io/en/latest/
+### Like Model
 
-Used for user authentication. While not currently utilised, this package enables registration and authentication using a range of social media accounts. This may be implemented in a future update.
+- The Like model contains all fields that are associated when a logged in user attempts to like a created post, as such:
+1. owner = ForeignKey with User field
+2. post = ForeignKey between Post model field and likes field
+3. created_at = DateTimeField
 
-### dj-rest-auth
-https://dj-rest-auth.readthedocs.io/en/latest/introduction.html
+### DisLike Model
 
-Provides REST API endpoints for login and logout. The user registration endpoints provided by dj-rest-auth are not utilised by the Tribehub frontend, as custom functionality was required and implemented by the Tribehub API.
+- The DisLike model contains all fields that are associated when a logged in user attempts to dislike a created post, as such:
+1. owner = ForeignKey with User field
+2. post = ForeignKey between Post model field and likes field
+3. created_at = DateTimeField
 
-### djangorestframework-simplejwt
-https://django-rest-framework-simplejwt.readthedocs.io/en/latest/
+### Comment Model
 
-Provides JSON web token authentication.
+- The Comment model contains multiple fields associated with content related to comments, as such:
+1. owner = owner field holds ForeignKey relationship with User model
+2. post = post field holds ForeignKey relationship with Post model
+3. content = TextField for comment input
+4. created_at = DateTimeField
+5. updated_at = DateTimeField
 
-### dj-database-url
-https://pypi.org/project/dj-database-url/
+### Subscribers Model
 
-Creates an environment variable to configure the connection to the database.
+- The Subscribers model contains multiple fields associated with content related to subscriptions, as such:
+1. fullname = CharField
+2. email = EmailField
+3. date = DateTimeField
 
-### psychopg2
-https://pypi.org/project/psycopg2/
+### SubscribersMessage Model
 
-Database adapater to enable interaction between Python and the PostgreSQL database.
+- The SubscribersMessage model contains multiple fields associated with content related to subscription messages, as such:
+1. fullname = CharField
+2. email = EmailField
+3. date = DateTimeField
+4. title = CharField
+5. message = TestField
 
-### python-dateutil
-https://pypi.org/project/python-dateutil/
+## Languages and Technologies Used
 
-This module provides extensions to the standard Python datetime module. It is a pre-requisite for django-recurrence library.
+- This project was created using the python programming language, 
 
-### django-recurrence
-https://django-recurrence.readthedocs.io/en/latest/
+- The API for this project was created using Django. The batteries included nature of this framework allowed for rapid development of the API.
 
-This utility enables functionality for working with recurring dates in Django. It provides a `ReccurenceField` field type for storing recurring datetimes in the database.
-This is used by the TribeHub API to programatically generate recurrences when calendar events are requested by the client, without having to store them in the database.
+### Tools Used
 
-### django-filter
-https://django-filter.readthedocs.io/en/stable/
+- [Gitpod](https://gitpod.io/) my preferred coding environment.
+- [GitHub](https://github.com/) to store my code repositories.
+- [Git](https://git-scm.com/) was used to commit and push the code changes.
+- [Heroku](https://dashboard.heroku.com/apps) used to host the  repositories and deploy the API.
+- [Django Rest Framework](https://www.django-rest-framework.org/) was used in many instances to add features to the API.
+- [Django API Testing](https://www.django-rest-framework.org/api-guide/testing/) was used to create tests and run them to test the API.
+- [Cloudinary](https://cloudinary.com/) was used to store the static files.
+- [PostgreSQL](https://www.postgresql.org/) was used to store the data inside my relational database.
+- [Pillow](https://python-pillow.org/) was used for image input validation (resolution and dimension filtering).
+- [Psycopg2](https://pypi.org/project/psycopg2/) database adapter for Python.
 
-django-filter is used to implement ISO datetime filtering functionality for the `events` GET endpoint. The client is able to request dates within a range using the `from_date` and `to_date` URL parameters. The API performs an additional check after filtering to 'catch' any repeat events within the requested range, where the original event stored in the database occurred beforehand.
-
-### django-cors-headers
-https://pypi.org/project/django-cors-headers/
-
-This Django app adds Cross-Origin-Resource Sharing (CORS) headers to responses, to enable the API to respond to requests from origins other than its own host.
-TribeHub is configured to allow requests from all origins, to facilitate future development of a native movile app using this API.
+## Testing
 
 ## Testing
 
