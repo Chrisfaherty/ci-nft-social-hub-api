@@ -63,7 +63,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), ]
+ALLOWED_HOSTS = ['localhost','8000-chrisfahert-cinftsocial-npx0m8s06z3.ws-eu98.gitpod.io', os.environ.get('ALLOWED_HOST'), ]
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-chrisfahert-cinftsocial-npx0m8s06z3.ws-eu96b.gitpod.io', 'ci-nft-social-hub-api.herokuapp.com']
 

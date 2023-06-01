@@ -1,10 +1,10 @@
 <h1 align="center">NFT Social Hub Django Rest Framework API - Project Portfolio 5</h1>
 
-![GitHub last commit](https://img.shields.io/github/last-commit/bodthegod/thebod-drf-api?color=blue&style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/Chrisfaherty/ci-nft-social-hub-api?color=blue&style=for-the-badge)
 
-![GitHub contributors](https://img.shields.io/github/contributors/bodthegod/thebod-drf-api?color=green&style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/bodthegod/thebod-drf-api?color=orange&style=for-the-badge)
-![GitHub top language](https://img.shields.io/github/languages/top/bodthegod/thebod-drf-api?color=brown&style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/Chrisfaherty/ci-nft-social-hub-api?color=green&style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/Chrisfaherty/ci-nft-social-hub-api?color=orange&style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/Chrisfaherty/ci-nft-social-hub-api?color=brown&style=for-the-badge)
 ## - By Christopher Faherty
 
 ### [View the live project here](https://ci-nft-social-hub.herokuapp.com/) #
@@ -31,7 +31,7 @@ From the backend perspective of this API, the user stories are CRUD focused and 
 
 ## Database Model Structure
 
-<img src="">
+<img src="docs/readmeimages/relationship-diagram.png>
 
 ### Profile Model
 
@@ -135,123 +135,127 @@ From the backend perspective of this API, the user stories are CRUD focused and 
 
 ## Testing
 
-## Testing
+In order to ensure my API was functioning correctly, both manual and automated tests were run. 
 
-### Manual testing
+### Validation
 
-A series of manual tests were carried out for each end point using the Django Rest Framework HTML interface running on the local server and using the deployed database. Please see the separate [testing.md]() document for details.
+- [PEP8 Linter](https://pep8ci.herokuapp.com/) PEP8 linter to ensure the code was PEP8 compliant and  validated. Every .py file was tested of which all passed with success.
 
-All the features of the deployed API were tested as part of testing/acceptance criteria for each of the React frontend user stories. These tests are documented in the [read-me]() for that project.
+### Manual Testing of User Stories
 
-Testing on the frontend revealed a number of bugs which had not been detected while testing the API in isolation, and led to the implementation of several additional features for consumption by the React app. The bugs are detailed in the bugs section below, and the following additional features were added as a result of front-end testing:
+1. As an admin, I want create functionality of all profiles, posts, likes and comments,
+2. As an admin, I want update functionality of all profiles, posts, likes and comments,  so that I can edit any content I choose to.
+3. As an admin, I want delete functionality of all profiles, posts, likes and comments so that I can delete any content that may be deemed as harmful.
+4. As an admin, I want to be able to let users subscribe to an email list to get updates on new features.
+5. As an admin, I want users to be able to send a message to admin if they require assistance.
 
-- T
-- U
-- T
-- P
-- A
-- A
-- A
+| # | Test | Functionality | Expected Action | Actual Action |
+| --- | --- | --- | --- | --- |
+| 1 | User | CRUD functionality of a User | A User can be created, read, updated or deleted | This works correctly |
+| 2 | Profile | Create, read and update functionality of a Profile | A Profile can be created, read, updated for a User | This works correctly |
+| 3 | Posts | CRUD functionality of a Post | A Post can be created, read, updated or deleted for a User | This works correctly |
+| 4 | Likes | Create and delete functionality for likes | A Like can be added or removed from a post if a user is logged in (cannot like own post or like and dislike the same post) | This works correctly |
+| 5 | DisLikes | Create and delete functionality for Dislikes | A DisLike can be added or removed from a post if a user is logged in (cannot Dislike own post or like and dislike the same post) | This works correctly |
+| 6 | Follower | Create and delete functionality for followers | A Follow can be added to a user or removed (has to be logged in) | This works correctly |
+| 7 | Comments | CRUD functionality of a comment | A Comment can be created, read, updated or deleted associated with a post (has to be own comment) | This works correctly |
+| 7 | Subscription | Create functionality of a subscriber | A user can subscribe to receive updates on new features | This works correctly |
+| 8 | Subscription Message | Create functionality of a message | A message can be created and sent to the admin to get in touch if there are any issues | This works correctly |
 
-### Automated tests
+<strong>The table above addresses all of my user stories, including the create, update and delete functionality of all aspects of my website. </strong>
 
+As well as this: likes, comments, posts, following and subscriptions messages are only able to be created by authenticated users that are signed into their account. Subscriptions can be sent by users that are not signed into their account. Profiles that have created content are the only profiles authenticated to edit and remove the content they have created (other than admins).
 
-- Test 
-- Test
-- Test
-- Test
-- Test
+<details>
+<summary><strong>#1 User and Profile Creation Test Screenshots</strong></summary>
+1. Creating a profile with username and password
+<img src="docs/testing/api-1-1.png">
+2. Showing the new user exists
+<img src="docs/testing/api-1-2.png">
+3. Showing the new profile exists
+<img src="docs/testing/api-1-3.png">
+</details>
 
+<details>
+<summary><strong>#2 Profile Edit and Deletion Test Screenshots</strong></summary>
+1. Adding content to edit profile
+<img src="docs/testing/api-2-1.png">
+2. Profile edited successfully
+<img src="docs/testing/api-2-2.png">
+3. Delete profile confirmation
+<img src="docs/testing/api-2-3.png">
+4. Profile deleted successfully
+<img src="docs/testing/api-2-4.png">
+</details>
 
-### Python validation
+<details>
+<summary><strong>#3 Posts Create, Edit and Deletion Test Screenshots</strong></summary>
+1. Creating post
+<img src="docs/testing/api-3-1.png">
+2. Editing post
+<img src="docs/testing/api-3-2.png"> 
+3. Edited post with new content and title (same post id)
+<img src="docs/testing/api-3-3.png">
+4. Delete post confirmation
+<img src="docs/testing/api-3-4.png">
+5. Deleted post (204 No Content on old post id)
+<img src="docs/testing/api-3-5.png">
+</details>
 
-Code errors and style issues were detected using the Pylance linter in VSCode, and immediately fixed throughout development.
-All files containing custom Python code were then validated using the [Code Institute Python Linter](https://pep8ci.herokuapp.com/):
+<details>
+<summary><strong>#4 Like and Unlike Test Screenshots</strong></summary>
+1. List of all posts to like
+<img src="docs/testing/api-4-1.png">
+2. Liking post (201 Created)
+<img src="docs/testing/api-4-2.png">
+3. Unlike post confirmation
+<img src="docs/testing/api-4-3.png">
+4. Deleted like (204 No Content on old like id)
+<img src="docs/testing/api-4-4.png">
+</details>
 
-- `contacts/admin.py`: no errors found
-- `contacts/models.py`: no errors found
-- `contacts/tests.py`: no errors found
-- `contacts/serializers.py`: no errors found
-- `contacts/urls.py`: no errors found
-- `contacts/views.py`: no errors found
+<details>
+<summary><strong>#5 Follow and Unfollow Test Screenshots</strong></summary>
+1. List of all followers
+<img src="docs/testing/api-5-1.png">
+2. Followed profile
+<img src="docs/testing/api-5-2.png">
+3. Unfollow confirmation
+<img src="docs/testing/api-5-3.png">
+4. Deleted follow (204 No Content on old followers id)
+<img src="docs/testing/api-5-4.png">
+</details>
 
-- `profiles/admin.py`: no errors found
-- `profiles/models.py`: no errors found
-- `profiles/serializers.py`: no errors found
-- `profiles/urls.py`: no errors found
-- `profiles/views.py`: no errors found  
+<details>
+<summary><strong>#6 Comments Create, Edit and Deletion Test Screenshots</strong></summary>
+22. List of all comments
+<img src="docs/testing/api-6-1.png">
+23. Created comment on a post
+<img src="docs/testing/api-6-2.png">
+24. Edited comment
+<img src="docs/testing/api-6-3.png">
+25. Comment deletion confirmation
+<img src="docs/testing/api-6-4.png">
+26. Deleted comment (204 No Content on old comments id)
+<img src="docs/testing/api-6-5.png">
+</details>
 
+## Known Bugs
 
-### Resolved bugs
-
-#### Bugs found while testing the API in isolation
-- D
-- T
-- T
-
-
-#### Bugs found while testing the React front-end
-- W
-- A
-- A
-- D
-- T
-- F
-- A
-- F 
-
-### Unresolved bugs
-- T
-
-
-## Deployment
-The NFT Social Hub API is deployed to Heroku, using an ElephantSQL Postgres database.
-To duplicate deployment to Heroku, follow these steps:
-
-- Fork or clone this repository in GitHub.
-- You will need a Cloudinary account to host user profile images.
-- Login to Cloudinary.
-- Select the 'dashboard' option.
-- Copy the value of the 'API Environment variable' from the part starting `cloudinary://` to the end. You may need to select the eye icon to view the full environment variable. Paste this value somewhere for safe keeping as you will need it shortly (but destroy after deployment).
-- Log in to Heroku.
-- Select 'Create new app' from the 'New' menu at the top right.
-- Enter a name for the app and select the appropriate region.
-- Select 'Create app'.
-- Select 'Settings' from the menu at the top.
-- Login to ElephantSQL.
-- Click 'Create new instance' on the dashboard.
-- Name the 'plan' and select the 'Tiny Turtle (free)' plan.
-- Select 'select region'.
-- Choose the nearest data centre to your location.
-- Click 'Review'.
-- Go to the ElephantSQL dashboard and click on the 'database instance name' for this project.
-- Copy the ElephantSQL database URL to your clipboard (this starts with `postgres://`).
-- Return to the Heroku dashboard.
-- Select the 'settings' tab.
-- Locate the 'reveal config vars' link and select.
-- Enter the following config var names and values:
-    - `CLOUDINARY_URL`: *your cloudinary URL as obtained above*
-    - `DATABASE_URL`: *your ElephantSQL postgres database URL as obtained above*
-    - `SECRET_KEY`: *your secret key*
-    - `ALLOWED_HOST`: *the url of your Heroku app (but without the `https://` prefix)*
-- Select the 'Deploy' tab at the top.
-- Select 'GitHub' from the deployment options and confirm you wish to deploy using GitHub. You may be asked to enter your GitHub password.
-- Find the 'Connect to GitHub' section and use the search box to locate your repo.
-- Select 'Connect' when found.
-- Optionally choose the main branch under 'Automatic Deploys' and select 'Enable Automatic Deploys' if you wish your deployed API to be automatically redeployed every time you push changes to GitHub.
-- Find the 'Manual Deploy' section, choose 'main' as the branch to deploy and select 'Deploy Branch'.
-- Your API will shortly be deployed and you will be given a link to the deployed site when the process is complete.
+There were a few bugs that I came across while coding up this API. Some of which were:
+-  The project was created in the wrong directory which was giving a ModuleNotFoundError.
+	* This was resolved by relocating the main project into the correct directory.
+-  Restricting users from logging out of the application.
+	* This was resolved by importing the logout_route into the urls.py.
+- Issue impacting access to the profiles.
+	* This was due to a typo in the api url in profiles/views.py.
+	
 
 ## Credits
-- T [Cloudinary](),
-- A [StackOverflow article](),
+- Inspiration from this API was taken from the [Moments](https://github.com/Code-Institute-Solutions/drf-api) walkthrough project from Code Institute and helped within the guidance and steps of creating this API.
 
-
-In addition, the following documentation was extensively referenced throughout development:
-
-- [Django documentation](https://www.djangoproject.com)
-- [Django Rest Framework documentation](https://www.django-rest-framework.org)
-- [django-filter documentation](https://django-filter.readthedocs.io/en/stable/)
-- [django-recurrence documentation](https://django-recurrence.readthedocs.io/en/latest/)
-- [Python datetime documentation](https://docs.python.org/3/library/datetime.html)
-- [dateutil documentation](https://dateutil.readthedocs.io/en/stable/index.html)
+## Acknowledgements
+I would like to take the opportunity to thank:
+* My Mentor Mo Shami for the great feedback productive meetings and guiding me to finishing this project.
+* I would also like to thank the Code institute team for all the support and material to assist with this project.
+* The code institute Tutors for being available when ever guidance was required.
+* I would like to thank Nick Coles & Chris Browning for the help with problem solving and independant reviews.
