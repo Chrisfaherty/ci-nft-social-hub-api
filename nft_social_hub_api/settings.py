@@ -37,7 +37,7 @@ REST_FRAMEWORK = {
     )],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE':10,
+    'PAGE_SIZE' :10,
     'DATETIME_FORMAT': '%d %b %Y',
 }
 if 'DEV' not in os.environ:
@@ -63,7 +63,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'),]
+ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), ]
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-chrisfahert-cinftsocial-npx0m8s06z3.ws-eu96b.gitpod.io', 'ci-nft-social-hub-api.herokuapp.com']
 

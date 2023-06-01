@@ -10,7 +10,8 @@ class Profile(models.Model):
     name = models.CharField(max_length=255, blank=True)
     content = models.TextField(blank=True)
     image = models.ImageField(
-        upload_to='images/', default='../ci-nft-social-hub/default_profile_mwct0j.jpg'
+        upload_to='images/',
+        default='../ci-nft-social-hub/default_profile_mwct0j.jpg'
     )
 
     class Meta:
