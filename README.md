@@ -158,8 +158,8 @@ In order to ensure my API was functioning correctly, both manual and automated t
 | 5 | DisLikes | Create and delete functionality for Dislikes | A DisLike can be added or removed from a post if a user is logged in (cannot Dislike own post or like and dislike the same post) | This works correctly |
 | 6 | Follower | Create and delete functionality for followers | A Follow can be added to a user or removed (has to be logged in) | This works correctly |
 | 7 | Comments | CRUD functionality of a comment | A Comment can be created, read, updated or deleted associated with a post (has to be own comment) | This works correctly |
-| 7 | Subscription | Create functionality of a subscriber | A user can subscribe to receive updates on new features | This works correctly |
-| 8 | Subscription Message | Create functionality of a message | A message can be created and sent to the admin to get in touch if there are any issues | This works correctly |
+| 7 | Subscription | Create and delete functionality of a subscriber | A user can subscribe to receive updates on new features | This works correctly |
+| 8 | Subscription Message | Create and delete functionality of a message | A message can be created and sent to the admin to get in touch if there are any issues | This works correctly |
 
 <strong>The table above addresses all of my user stories, including the create, update and delete functionality of all aspects of my website. </strong>
 
@@ -214,7 +214,19 @@ As well as this: likes, comments, posts, following and subscriptions messages ar
 </details>
 
 <details>
-<summary><strong>#5 Follow and Unfollow Test Screenshots</strong></summary>
+<summary><strong>#5 DisLike and UnDislike Test Screenshots</strong></summary>
+1. List of all posts to dislike
+<img src="docs/testing/api-dislike-1.png">
+2. DisLiking post (201 Created)
+<img src="docs/testing/api-dislike-2.png">
+3. UnDislike post confirmation
+<img src="docs/testing/api-dislike-3.png">
+4. Deleted Dislike (204 No Content on old Dislike id)
+<img src="docs/testing/api-dislike-4.png">
+</details>
+
+<details>
+<summary><strong>#6 Follow and Unfollow Test Screenshots</strong></summary>
 1. List of all followers
 <img src="docs/testing/api-5-1.png">
 2. Followed profile
@@ -226,17 +238,43 @@ As well as this: likes, comments, posts, following and subscriptions messages ar
 </details>
 
 <details>
-<summary><strong>#6 Comments Create, Edit and Deletion Test Screenshots</strong></summary>
-22. List of all comments
+<summary><strong>#7 Comments Create, Edit and Deletion Test Screenshots</strong></summary>
+1. List of all comments
 <img src="docs/testing/api-6-1.png">
-23. Created comment on a post
+2. Created comment on a post
 <img src="docs/testing/api-6-2.png">
-24. Edited comment
+3. Edited comment
 <img src="docs/testing/api-6-3.png">
-25. Comment deletion confirmation
+4. Comment deletion confirmation
 <img src="docs/testing/api-6-4.png">
-26. Deleted comment (204 No Content on old comments id)
+5. Deleted comment (204 No Content on old comments id)
 <img src="docs/testing/api-6-5.png">
+</details>
+
+<details>
+<summary><strong>#8 Subscriptions Create and Delete, 
+Test Screenshots</strong></summary>
+1. List of all subscriptions
+<img src="docs/testing/api-8-1.png">
+2. Created a subscription
+<img src="docs/testing/api-8-2.png">
+3. Subscription deletion confirmation
+<img src="docs/testing/api-8-3.png">
+4. Deleted subscription (204 No Content)
+<img src="docs/testing/api-8-4.png">
+</details>
+
+<details>
+<summary><strong>#9 Subscriptions message Create and Delete, 
+Test Screenshots</strong></summary>
+1. List of all subscription messages
+<img src="docs/testing/api-9-1.png">
+2. Created a subscription message
+<img src="docs/testing/api-9-2.png">
+3. Subscription message deletion confirmation
+<img src="docs/testing/api-9-3.png">
+4. Deleted subscription message (204 No Content)
+<img src="docs/testing/api-9-4.png">
 </details>
 
 ## Known Bugs
