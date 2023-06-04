@@ -19,7 +19,8 @@
 4. [Testing](#testing)
     - [Validation](#validation)
 5. [Bugs and fixes](#known-bugs)
-6. [Credits](#credits)
+6. [Deployment](#deployment)
+7. [Credits](#credits)
 
 
 ## User Stories
