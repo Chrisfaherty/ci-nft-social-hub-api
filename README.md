@@ -293,106 +293,106 @@ There were a few bugs that I came across while coding up this API. Some of which
 ### Deploying to Heroku
 * Go to the heroku.com site.
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_1.png">
+    <img src="docs/deployment/heroku_1.png">
     </details>
 * Click the signup button in the top right.
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_2.png">
+    <img src="docs/deployment/heroku_2.png">
     </details>
 * Create an account on heroku.com,
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_3.png">
+    <img src="docs/deployment/heroku_3.png">
     </details>
 * Confirm your account in the email heroku sent to your inbox,
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_4.png">
+    <img src="docs/deployment/heroku_4.png">
     </details>
 * Create a password,
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_5.png">
+    <img src="docs/deployment/heroku_5.png">
     </details>
 * Click and proceed,
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_6.png">
+    <img src="docs/deployment/heroku_6.png">
     </details>
 * Accept the terms of service,
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_7.png">
+    <img src="docs/deployment/heroku_7.png">
     </details>
 * Create a new app, create a name for your app "ci_pp3_ppm" and choose your region,
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_8.png">
+    <img src="docs/deployment/heroku_8.png">
     </details>
 * Go to the settings section,
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_9.png">
+    <img src="docs/deployment/heroku_9.png">
     </details>
 * Click Reveal Config Vars,
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_10.png">
+    <img src="docs/deployment/heroku_10.png">
     </details>
 * Input your .json file. name in the 'Key' field, copy the .json file and paste it in 'Value' field. Also add a key 'PORT' and value '8000'.
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_11.png">
+    <img src="docs/deployment/heroku_11.png">
     </details>
 * In the build packs section click add buildpack. For this project, I added 2 buildpacks 'Python' and 'node.js'. Make sure the Python build pack is above the Nodejs buildpack.
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_12.png">
+    <img src="docs/deployment/heroku_12.png">
     </details>
 * Go to "Deploy" in "Deployment method" select "GitHub",
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_13.png">
+    <img src="docs/deployment/heroku_13.png">
     </details>
 * Click 'Search' (Enter in your projects name that you have in your github repositry)and then 'Connect'. This project is connected to Chrisfaherty/CI_PP3_PPM.
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_14.png">
+    <img src="docs/deployment/heroku_14.png">
     </details>
 * Choose the branch you want to buid your app from "main" .
 * If prefered, click on "Enable Automatic Deploys", which keeps the app up to date when you push to git hub. Automatic deployments is turned on for this project.
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_15.png">
+    <img src="docs/deployment/heroku_15.png">
     </details>
 * If the project doesn't deploy after selecting automatic deploy . In the Manual deploy section click Deploy Branch to deploy your code, this is what I had to do.
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku_16.png">
+    <img src="docs/deployment/heroku_16.png">
     </details>
 * Once the code is deployed it will show a button that you can click to view the deployed site. Then the project has sucessfully been deployed.
 
 ### Connecting to ElephantSQL
 * Log in to ElephantSQL.com to access your dashboard
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/elephantsql-1.png">
+    <img src="docs/deployment/elephantsql-1.png">
     </details>
 
 * Click "Create New Instance"
 
 * Set up a plan
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/elephantsql-2.png">
+    <img src="docs/deployment/elephantsql-2.png">
     </details>
 
 * Click "Select Region"
 
 * Select a data center near you
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/elephantsql-3.png">
+    <img src="docs/deployment/elephantsql-3.png">
     </details>
 
 * Then click "Review"
 
 * Check your details are correct and then click "Create Instance"
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/elephantsql-4.png">
+    <img src="docs/deployment/elephantsql-4.png">
     </details>
 
 * Return to the ElephantSQL dashboard and click on the database instance name for this project
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/elephantsql-5.png">
+    <img src="docs/deployment/elephantsql-5.png">
     </details>
 
 * Copy the database url for your project, as we’ll need it in the next step
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/elephantsql-6.png">
+    <img src="docs/deployment/elephantsql-6.png">
     </details>
 
 * Now to connect the database up to heroku
@@ -401,47 +401,47 @@ There were a few bugs that I came across while coding up this API. Some of which
 
 * Go to the Settings tab
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku-settings-tab.png">
+    <img src="docs/deployment/heroku-settings-tab.png">
     </details>
 
 * Click Reveal Config Vars
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku-reveal-config-vars.png">
+    <img src="docs/deployment/heroku-reveal-config-vars.png">
     </details>
 
 * Add a Config Var called DATABASE_URL. Paste your ElephantSQL database URL in as the value
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/heroku-database_url-config-var.png">
+    <img src="docs/deployment/heroku-database_url-config-var.png">
     </details>
 
 * Back in gitpod in your env.py file add a new key, DATABASE_URL, and give it a value of the copied database URL
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/gitpod-1.png">
+    <img src="docs/deployment/gitpod-1.png">
     </details>
 
 * Install the dj-database-url package version 0.5.0 in the terminal with pip3. This will allow us to parse the URL we got above to a format Django can work with:
     <details><summary>Screenshots</summary>
-    <img src="docs/readme.md/deployment/gitpod-2.png">
+    <img src="docs/deployment/gitpod-2.png">
     </details>
 
 * and remember to add it to your requirements.txt with
     <details><summary>Screenshots</summary>
-    <img src="docs/readme.md/deployment/gitpod-3.png">
+    <img src="docs/deployment/gitpod-3.png">
     </details>
 
 * At the top of settings.py, import the package and the env.py file
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/gitpod-4.png">
+    <img src="docs/deployment/gitpod-4.png">
     </details>
 
 * In settings.py, comment out the default database setting and replace it to use the DATABASE_URL environment variable. Your code should now look like this
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/gitpod-5.png">
+    <img src="docs/deployment/gitpod-5.png">
     </details>
 
 * Run the migrate command in the terminal to build the database according to the model structure we created in earlier videos
     <details><summary>Screenshots</summary>
-    <img src="docs/readme/deployment/gitpod-6.png">
+    <img src="docs/deployment/gitpod-6.png">
     </details>
 
 
