@@ -331,11 +331,11 @@ There were a few bugs that I came across while coding up this API. Some of which
     <details><summary>Screenshots</summary>
     <img src="docs/deployment/heroku_10.png">
     </details>
-* Input your .json file. name in the 'Key' field, copy the .json file and paste it in 'Value' field. Also add a key 'PORT' and value '8000'.
+* Input your Config Vars for the project.
     <details><summary>Screenshots</summary>
     <img src="docs/deployment/heroku_11.png">
     </details>
-* In the build packs section click add buildpack. For this project, I added 2 buildpacks 'Python' and 'node.js'. Make sure the Python build pack is above the Nodejs buildpack.
+* In the build packs section click add buildpack. For this project, I added  'Python' as the build pack.
     <details><summary>Screenshots</summary>
     <img src="docs/deployment/heroku_12.png">
     </details>
@@ -343,7 +343,7 @@ There were a few bugs that I came across while coding up this API. Some of which
     <details><summary>Screenshots</summary>
     <img src="docs/deployment/heroku_13.png">
     </details>
-* Click 'Search' (Enter in your projects name that you have in your github repositry)and then 'Connect'. This project is connected to Chrisfaherty/CI_PP3_PPM.
+* Click 'Search' (Enter in your projects name that you have in your github repositry)and then 'Connect'. This project is connected to Chrisfaherty/ci-nft-social-hub-api.
     <details><summary>Screenshots</summary>
     <img src="docs/deployment/heroku_14.png">
     </details>
