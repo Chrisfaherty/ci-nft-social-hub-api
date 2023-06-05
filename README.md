@@ -32,7 +32,7 @@ From the backend perspective of this API, the user stories are CRUD focused and 
 
 ## Database Model Structure
 
-<img src="docs/readmeimages/relationship-diagram.png>
+<img src="docs/readmeimages/relationship-diagram.png">
 
 ### Profile Model
 
